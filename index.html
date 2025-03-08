@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>sumucal お釣り計算</title>
+    <title>お釣り計算</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="status">商品金額を入力してください</div>
     <div id="display">0</div>
     <div class="button-grid">
-        <button onclick="inputDigit(1)">1</button>
-        <button onclick="inputDigit(2)">2</button>
-        <button onclick="inputDigit(3)">3</button>
-        <button onclick="inputDigit(4)">4</button>
-        <button onclick="inputDigit(5)">5</button>
-        <button onclick="inputDigit(6)">6</button>
         <button onclick="inputDigit(7)">7</button>
         <button onclick="inputDigit(8)">8</button>
         <button onclick="inputDigit(9)">9</button>
+        <button onclick="resetAll()">AC</button>
+        <button onclick="inputDigit(4)">4</button>
+        <button onclick="inputDigit(5)">5</button>
+        <button onclick="inputDigit(6)">6</button>
         <button onclick="clearDisplay()">C</button>
+        <button onclick="inputDigit(1)">1</button>
+        <button onclick="inputDigit(2)">2</button>
+        <button onclick="inputDigit(3)">3</button>
+        <button onclick="noop()">計</button>
         <button onclick="inputDigit(0)">0</button>
+        <button onclick="inputDoubleZero()">00</button>
         <button id="actionButton" onclick="calculateChange()" class="highlight">次へ</button>
     </div>
     <script src="script.js"></script>
