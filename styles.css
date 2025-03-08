@@ -10,6 +10,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    touch-action: manipulation; /* タッチ操作でのズームを抑制 */
 }
 
 #status {
@@ -50,6 +51,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.2s;
+    touch-action: manipulation; /* ボタンのダブルタップによるズームを抑制 */
 }
 
 button:hover {
