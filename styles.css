@@ -6,11 +6,12 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* センター揃えを保証 */
+    align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     touch-action: manipulation;
+    overflow-x: hidden;
 }
 
 #status {
@@ -27,29 +28,33 @@ body {
 }
 
 #display {
-    width: 80%; /* 電卓部分と同じ幅 */
-    max-width: 400px; /* 電卓部分と同じ最大幅 */
+    width: 80%;
+    max-width: 400px;
     min-height: 10vh;
     background: #333;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px auto; /* センター揃えを強化 */
+    margin: 0 auto 20px auto;
     padding: 20px;
     border-radius: 10px;
     font-size: 4rem;
     box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: auto; /* 長い数字をスクロール可能に */
 }
 
 .button-grid {
-    width: 80%; /* 入力欄と同じ幅 */
-    max-width: 400px; /* 入力欄と同じ最大幅 */
+    width: 80%;
+    max-width: 400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 10px;
-    margin: 0 auto; /* センター揃え */
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 button {
@@ -60,16 +65,11 @@ button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.2s;
     touch-action: manipulation;
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-button:hover {
-    background: #777;
 }
 
 .function-button {
@@ -94,23 +94,17 @@ button:hover {
 }
 
 #result-details {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .clear-button {
-    width: 80vw;
-    height: calc(20vw / 4);
+    width: 80%;
+    height: 5rem; /* 電卓ボタン1つ分をremで固定 */
     font-size: 1.5rem;
-    padding: 15px;
     background: #007bff;
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.2s;
-    margin: 0 auto; /* センター揃え */
-}
-
-.clear-button:hover {
-    background: #0056b3;
+    margin: 0 auto;
 }
