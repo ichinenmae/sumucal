@@ -1,5 +1,5 @@
 body {
-    background-color: #1a1a1a;
+    background-color: #000;
     color: white;
     font-family: Arial, sans-serif;
     font-size: 2rem;
@@ -16,6 +16,7 @@ body {
 #status {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    padding: 10px;
 }
 
 #display {
@@ -27,16 +28,15 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    padding: 10px;
-    white-space: pre-wrap;
-    overflow-x: auto;
-    overflow-y: auto;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 2.5rem;
     box-sizing: border-box;
 }
 
 .button-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4列に変更 */
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     width: 80%;
     max-width: 400px;
@@ -48,7 +48,7 @@ button {
     background: #555;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px; /* 角を丸く */
     cursor: pointer;
     transition: background 0.2s;
     touch-action: manipulation;
@@ -59,5 +59,10 @@ button:hover {
 }
 
 .highlight {
-    background: #007bff;
+    background: #007bff; /* 算ボタンの青 */
+}
+
+.empty {
+    background: transparent;
+    border: none;
 }
