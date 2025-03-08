@@ -2,67 +2,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お釣り計算</title>
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: white;
-            font-family: Arial, sans-serif;
-            font-size: 2rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-        #status {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        #display {
-            width: 80%;
-            min-height: 10vh;
-            background: #333;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            padding: 10px;
-            white-space: pre-wrap;
-            overflow-y: auto;
-        }
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 80%;
-            max-width: 400px;
-        }
-        button {
-            font-size: 2rem;
-            padding: 20px;
-            background: #555;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background: #777;
-        }
-        .wide {
-            grid-column: span 3;
-        }
-        .highlight {
-            background: #007bff;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>sumucal お釣り計算</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="status">商品金額を入力してください</div>
@@ -81,68 +23,6 @@
         <button onclick="inputDigit(0)">0</button>
         <button id="actionButton" onclick="calculateChange()" class="highlight">次へ</button>
     </div>
-
-    <script>
-        let step = 0; // 0: 商品金額入力中, 1: 支払い金額入力中
-        let price = 0;
-        let received = 0;
-        const display = document.getElementById('display');
-        const status = document.getElementById('status');
-        const actionButton = document.getElementById('actionButton');
-
-        function inputDigit(digit) {
-            if (display.innerText === '0') {
-                display.innerText = digit;
-            } else {
-                display.innerText += digit;
-            }
-        }
-
-        function clearDisplay() {
-            display.innerText = '0';
-            status.innerText = '商品金額を入力してください';
-            actionButton.innerText = '次へ';
-            step = 0;
-            price = 0;
-            received = 0;
-        }
-
-        function calculateChange() {
-            if (step === 0) {
-                price = parseInt(display.innerText);
-                display.innerText = '0';
-                status.innerText = '支払い金額を入力してください';
-                actionButton.innerText = '計算'; // ボタンを「計算」に変更
-                step = 1;
-            } else {
-                received = parseInt(display.innerText);
-                const change = received - price;
-
-                if (change < 0) {
-                    display.innerText = '支払い金額が不足しています';
-                    status.innerText = 'もう一度お試しください';
-                } else if (change === 0) {
-                    display.innerText = 'お釣りはありません';
-                    status.innerText = '計算完了';
-                } else {
-                    const denominations = [10000, 5000, 1000, 500, 100, 50, 10, 5, 1];
-                    let result = 'お釣り:\n';
-                    let remainingChange = change;
-
-                    for (let denom of denominations) {
-                        const count = Math.floor(remainingChange / denom);
-                        if (count > 0) {
-                            result += `${denom}円 x ${count}\n`;
-                            remainingChange -= denom * count;
-                        }
-                    }
-                    display.innerText = result;
-                    status.innerText = `合計お釣り: ${change}円`;
-                }
-                step = 0; // リセット
-                actionButton.innerText = '次へ'; // ボタンを「次へ」に戻す
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
