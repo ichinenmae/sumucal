@@ -5,6 +5,14 @@ const display = document.getElementById('display');
 const status = document.getElementById('status');
 const actionButton = document.getElementById('actionButton');
 
+// ボタン要素を取得してダブルタップによるズームを防止
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('dblclick', (event) => {
+        event.preventDefault(); // ダブルタップ時のデフォルト動作（ズーム）をキャンセル
+    });
+});
+
 function inputDigit(digit) {
     if (display.innerText === '0') {
         display.innerText = digit;
