@@ -9,7 +9,7 @@ const actionButton = document.getElementById('actionButton');
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     button.addEventListener('dblclick', (event) => {
-        event.preventDefault(); // ダブルタップ時のデフォルト動作（ズーム）をキャンセル
+        event.preventDefault();
     });
 });
 
@@ -18,6 +18,15 @@ function inputDigit(digit) {
         display.innerText = digit;
     } else {
         display.innerText += digit;
+    }
+    adjustFontSize();
+}
+
+function inputDoubleZero() {
+    if (display.innerText === '0') {
+        display.innerText = '0';
+    } else {
+        display.innerText += '00';
     }
     adjustFontSize();
 }
@@ -31,7 +40,7 @@ function adjustFontSize() {
     display.style.fontSize = `${fontSize}rem`;
 }
 
-function clearDisplay() {
+function resetAll() { // AC: 初期状態にリセット
     display.innerText = '0';
     display.style.fontSize = '2.5rem';
     status.innerText = '商品金額を入力してください';
@@ -39,6 +48,15 @@ function clearDisplay() {
     step = 0;
     price = 0;
     received = 0;
+}
+
+function clearDisplay() { // C: 現在入力中の数値をクリア
+    display.innerText = '0';
+    display.style.fontSize = '2.5rem';
+}
+
+function noop() { // 計: 現時点では何もしない
+    // 将来の拡張用に空関数を用意
 }
 
 function calculateChange() {
