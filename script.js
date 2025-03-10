@@ -4,7 +4,7 @@ const FONT_SIZE_MIN = 2;
 const DENOMINATIONS = [10000, 5000, 1000, 500, 100, 50, 10, 5, 1];
 
 // 状態管理
-let step = 0;
+let step = 0; // 0: 商品金額入力中, 1: 受け取り金額入力中, 2: 計算結果表示中
 let price = 0;
 let received = 0;
 
@@ -17,12 +17,12 @@ const calculator = document.getElementById('calculator');
 const result = document.getElementById('result');
 const resultDetails = document.getElementById('result-details');
 
-// 3桁区切り関数（toLocaleStringの代替）
+// 3桁区切り関数
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// ボタン要素を取得してダブルタップを防止
+// ダブルタップを防止
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     button.addEventListener('dblclick', (event) => {
@@ -30,6 +30,7 @@ buttons.forEach(button => {
     });
 });
 
+// 数字入力処理
 function inputDigit(digit) {
     if (display.innerText === '0' || step === 2) {
         display.innerText = digit;
@@ -39,6 +40,7 @@ function inputDigit(digit) {
     adjustFontSize();
 }
 
+// 00入力処理
 function inputDoubleZero() {
     if (display.innerText === '0' || step === 2) {
         display.innerText = '0';
@@ -48,6 +50,7 @@ function inputDoubleZero() {
     adjustFontSize();
 }
 
+// フォントサイズ調整
 function adjustFontSize() {
     const textLength = display.innerText.length;
     let fontSize = FONT_SIZE_DEFAULT;
@@ -57,6 +60,7 @@ function adjustFontSize() {
     display.style.fontSize = `${fontSize}rem`;
 }
 
+// 初期状態にリセット
 function resetAll() {
     display.innerText = '0';
     display.style.fontSize = `${FONT_SIZE_DEFAULT}rem`;
@@ -72,11 +76,13 @@ function resetAll() {
     display.style.display = 'block';
 }
 
+// 入力欄クリア
 function clearDisplay() {
     display.innerText = '0';
     display.style.fontSize = `${FONT_SIZE_DEFAULT}rem`;
 }
 
+// 計算処理
 function calculateChange() {
     if (step === 0) {
         const priceValue = parseInt(display.innerText.replace(/[^0-9]/g, '')) || 0;
