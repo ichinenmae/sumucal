@@ -33,10 +33,11 @@ body {
 }
 
 #prevPrice {
-    font-size: 1rem;
+    font-size: 2rem;
     color: #888;
     margin-bottom: 10px;
     padding: 5px;
+    text-align: center;
 }
 
 #display {
@@ -56,6 +57,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-x: auto;
+    text-align: center;
 }
 
 .button-grid {
@@ -124,6 +126,50 @@ button {
 
 #result-details {
     margin-bottom: 10px;
+    font-size: 2rem;
+    width: 100%;
+    text-align: left;
+    color: #888; /* フォントカラーを#888に統一 */
+}
+
+.result-details-amounts {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.result-details-amounts > div:nth-child(odd) {
+    text-align: left;
+    color: #888; /* ラベルも#888に */
+}
+
+.result-details-amounts > div:nth-child(even) {
+    text-align: right;
+    color: #888; /* 金額も#888に */
+}
+
+.result-details-change {
+    font-size: 6rem;
+    text-align: center;
+    margin: 20px 0;
+    color: white; /* お釣りは白のまま */
+}
+
+.result-details-breakdown {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+}
+
+.result-details-breakdown > div:nth-child(odd) {
+    text-align: left;
+    color: #888; /* ラベルも#888に */
+}
+
+.result-details-breakdown > div:nth-child(even) {
+    text-align: right;
+    color: #888; /* 枚数も#888に */
 }
 
 .clear-button {
@@ -153,6 +199,16 @@ button {
     }
     #status {
         font-size: 1.2rem;
+    }
+    #prevPrice {
+        font-size: 1.5rem;
+    }
+    #result-details {
+        font-size: 1.5rem;
+    }
+    .result-details-amounts > div,
+    .result-details-breakdown > div {
+        font-size: 1.5rem; /* モバイルでも一貫性 */
     }
 }
 
