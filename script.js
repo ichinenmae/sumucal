@@ -195,11 +195,11 @@ function calculateChange() {
         if (change > 0) {
             let remainingChange = change;
             details += '<div class="result-details-breakdown">';
-            details += '<div>お札・硬貨の枚数:</div><div></div>'; // 空のdivでグリッド調整
+            details += '<div>お札・硬貨の枚数:</div>';
             for (let denom of DENOMINATIONS) {
                 const count = Math.floor(remainingChange / denom);
                 if (count > 0) {
-                    details += `<div>${getDenominationName(denom)}</div><div>x ${count}</div>`;
+                    details += `<div>${getDenominationName(denom)} x ${count}</div>`;
                     remainingChange -= denom * count;
                 }
             }

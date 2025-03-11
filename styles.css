@@ -126,10 +126,9 @@ button {
 
 #result-details {
     margin-bottom: 10px;
-    font-size: 2rem;
     width: 100%;
-    text-align: left;
-    color: #888; /* フォントカラーを#888に統一 */
+    font-size: 2rem;
+    color: #888;
 }
 
 .result-details-amounts {
@@ -141,35 +140,38 @@ button {
 
 .result-details-amounts > div:nth-child(odd) {
     text-align: left;
-    color: #888; /* ラベルも#888に */
+    color: #888;
 }
 
 .result-details-amounts > div:nth-child(even) {
     text-align: right;
-    color: #888; /* 金額も#888に */
+    color: #888;
 }
 
 .result-details-change {
-    font-size: 6rem;
+    font-size: 4rem;
+    color: white;
     text-align: center;
     margin: 20px 0;
-    color: white; /* お釣りは白のまま */
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90vw;
+    max-width: 380px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .result-details-breakdown {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px;
-}
-
-.result-details-breakdown > div:nth-child(odd) {
-    text-align: left;
-    color: #888; /* ラベルも#888に */
-}
-
-.result-details-breakdown > div:nth-child(even) {
     text-align: right;
-    color: #888; /* 枚数も#888に */
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 4rem; /* 2文字分の空間 */
+}
+
+.result-details-breakdown > div {
+    margin-bottom: 5px;
 }
 
 .clear-button {
@@ -181,6 +183,7 @@ button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 4rem; /* 2文字分の空間 */
     margin: 0 auto;
 }
 
@@ -203,12 +206,19 @@ button {
     #prevPrice {
         font-size: 1.5rem;
     }
-    #result-details {
+    .result-details-amounts > div {
         font-size: 1.5rem;
     }
-    .result-details-amounts > div,
-    .result-details-breakdown > div {
-        font-size: 1.5rem; /* モバイルでも一貫性 */
+    .result-details-change {
+        font-size: 3rem;
+        max-width: 360px;
+    }
+    .result-details-breakdown {
+        font-size: 1.2rem;
+        margin-bottom: 3rem; /* モバイルでは少し調整 */
+    }
+    .clear-button {
+        margin-top: 3rem; /* モバイルでは少し調整 */
     }
 }
 
